@@ -1,0 +1,33 @@
+---
+# Instalace sudo, přidání usera ansible, přidání do sudo grupy
+
+-
+
+  # Hosts:
+  hosts: ctvrtek,patek 
+  user: root
+  
+  # Vars:
+  
+  # Tasks:
+  tasks:
+    - name: Instalace sudo
+      package:
+        name: sudo
+        state: present
+    - name: Přidání grupy ansible
+      group:
+        name: ansible         
+    - name: Přidání usera ansible
+      user:
+        name: ansible 
+        password: "{{ 'ansi1250' | password_hash('sha512') }}"
+        groups: ansible,sudo
+  
+  #Handlers:
+  
+  #Roles:
+  
+
+
+...
