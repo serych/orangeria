@@ -1,0 +1,6 @@
+mkdir skripty
+joe pokus  a do něj "ls /etc"
+vysvětlit spustitelnost scriptu, pokus ln -s do /usr/local/bin
+vysvětlit #!/bin/bash 
+joe apt-mail (viz soubor)
+apt install mailutils

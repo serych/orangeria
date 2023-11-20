@@ -1,0 +1,26 @@
+#!/bin/bash
+# Skript zkontroluje aktualizace a pokud nejake najde, posle na zadanou
+# adresu mail s informacemi o upgradech
+#
+
+# Do adresy prijemce zkopirujeme prvni parametr
+ADR=$1
+# Pokud neni parametr zadan, pouzije se nasledujici defaultni adresa
+ [ -z $1 ] && ADR="admin@nekde.cz"
+# Vyuziva optimalizace logickych funkci (druhy operator AND se vubec nevyhodnocuje)
+# pokud je prvni nepravda [ -z $1 ] znamena $1 je prazdny
+
+# Pripravime predmet zpravy
+SUB="Aktualizace serveru $HOSTNAME"
+
+# Vystup presmerovany do cerne diry
+apt-get update > /dev/null 
+# Provedeni simulovaneho upgradu (parametr -s u apt-get upgrade) 
+# Vyhledani radky obsahujici "upgraded," a z ni vypis prvniho parametru (pocet upgradu)
+# Pokud je ruzny od nuly, provede se cast then
+if [ `apt-get -s upgrade | grep upgraded, |awk '{print $1}'` -ne 0 ]
+        then
+        # Simulovany upgrade a z nej vyseknuta cast mezi "The following" a "upgraded."
+        # Ta se pouzije jako text mailu odeslaneho na $ADR 
+        apt-get -s upgrade | sed -n '/The following/,/upgraded./p' | mail $ADR -s "\"$SUB\""
+fi

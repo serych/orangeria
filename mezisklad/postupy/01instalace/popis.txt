@@ -1,0 +1,9 @@
+spuštění
+orangepi-config nastavení sítě
+ping 8.8.8.8
+apt update
+apt upgrade
+apt install joe
+joe /boot/orangepiEnv.txt  console=serial
+reboot
+aplikace sshcopy.sh a ansible-playbook Init_ansible.yaml (případně s -l pomerancXX) 

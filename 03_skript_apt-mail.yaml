@@ -9,7 +9,7 @@
   tasks: 
   - name: Copy file with backup
     copy:
-      src: /root/mezisklad/root/skripty/apt-mail
+      src: mezisklad/root/skripty/apt-mail
       dest: /root/skripty/apt-mail
       backup: yes
              
