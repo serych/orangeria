@@ -2,9 +2,8 @@
 # Instalace sudo, přidání usera ansible, přidání do sudo grupy
 
 -
-
   # Hosts:
-  hosts: ctvrtek,patek 
+  hosts: all 
   user: root
   
   # Vars:

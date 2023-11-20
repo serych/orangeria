@@ -1,0 +1,16 @@
+---
+# Zkopíruje hotový skript do /root/skripty (pokud existuje udìlá jeho backup)
+
+- hosts: all
+  user: ansible
+  gather_facts: yes
+  become: yes
+
+  tasks: 
+  - name: Copy file with backup
+    copy:
+      src: /root/mezisklad/root/skripty/apt-mail
+      dest: /root/skripty/apt-mail
+      backup: yes
+             
+...        
