@@ -2,9 +2,10 @@
 # apt update, dist-upgrade, (reboot), autoremove
 
 - hosts: all
-  user: ansible
+# user: ansible
+  user: root
   gather_facts: yes
-  become: yes
+#  become: yes
 
   tasks:
     - name: Perform a dist-upgrade.

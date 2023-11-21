@@ -1,0 +1,24 @@
+---
+# Instalace apache2 webserveru
+
+-
+  # Hosts:
+  hosts: all 
+  user: root
+  
+  # Vars:
+  
+  # Tasks:
+  tasks:
+    - name: Instalace apache2
+      package:
+        name: apache2
+        state: present
+  
+  #Handlers:
+  
+  #Roles:
+  
+
+
+...
