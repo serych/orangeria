@@ -2,10 +2,11 @@
 # Zkopiruje hotovy skript do /root/skripty (pokud existuje udela jeho backup)
 
 - hosts: all
-  user: root 
-#  user: ansible
-  gather_facts: yes
-#  become: yes
+  user: ansible
+#  user: root
+  gather_facts: no
+  strategy: free 
+  become: yes
 
   tasks: 
   - name: Copy file with backup

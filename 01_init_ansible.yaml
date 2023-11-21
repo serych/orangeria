@@ -5,6 +5,8 @@
   # Hosts:
   hosts: all 
   user: root
+  gather_facts: false
+  strategy: free
   
   # Vars:
   

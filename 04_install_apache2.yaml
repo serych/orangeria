@@ -5,6 +5,9 @@
   # Hosts:
   hosts: all 
   user: ansible
+#  user: root
+  gather_facts: no
+  strategy: free 
   become: yes
   
   # Vars:
