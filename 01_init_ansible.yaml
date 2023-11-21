@@ -21,7 +21,14 @@
       user:
         name: ansible 
         password: "{{ 'ansi1250' | password_hash('sha512') }}"
-        groups: ansible,sudo
+        groups: ansible
+    - name: User ansible do sudoers bez hesla
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^ansible'
+        line: 'ansible ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'    
   
   #Handlers:
   

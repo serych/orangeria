@@ -4,7 +4,8 @@
 -
   # Hosts:
   hosts: all 
-  user: root
+  user: ansible
+  become: yes
   
   # Vars:
   

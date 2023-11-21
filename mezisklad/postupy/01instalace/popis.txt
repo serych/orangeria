@@ -1,3 +1,6 @@
+Na citronu:
+ssh-keygen
+
 spuštění
 orangepi-config nastavení sítě
 ping 8.8.8.8
@@ -6,4 +9,5 @@ apt upgrade
 apt install joe
 joe /boot/orangepiEnv.txt  console=serial
 reboot
-aplikace sshcopy.sh a ansible-playbook Init_ansible.yaml (případně s -l pomerancXX) 
+aplikace sshcopy.sh a 01_ansible-playbook Init_ansible.yaml (případně s -l "pomerancXX pomerancXY ...")
+ 
