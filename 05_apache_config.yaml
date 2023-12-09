@@ -1,0 +1,50 @@
+---
+# Konfigurace apache2
+
+-
+  # Hosts:
+  hosts: all 
+  user: ansible
+  gather_facts: false
+  strategy: free
+  become: yes
+  
+  # Vars:
+  
+  # Tasks:
+  tasks:
+    - name: Vytvoreni site mujweb v sites-available
+      copy:
+        src: mezisklad/etc/apache2/sites-available/001-mujweb.conf
+        dest: /etc/apache2/sites-available/
+        backup: yes
+    - name: Symlink do sites-enable
+      file:
+        src: /etc/apache2/sites-available/001-mujweb.conf
+        dest: /etc/apache2/sites-enabled/001-mujweb.conf
+        state: link    
+    - name: Odstraneni 000-default ze sites-enabled 
+      file:
+        path: /etc/apache2/sites-enabled/000-default.conf
+        state: absent
+    - name: Vytvori /var/www/mujweb pokud neexistuje
+      file: 
+        path: "/var/www/mujweb"
+        state: directory       
+    - name: Vytvoreni site mujweb v sites-available
+      copy:
+        src: mezisklad/var/www/mujweb/index.html
+        dest: /var/www/mujweb/index.html
+        backup: yes   
+    - name: Reload service httpd, in all cases
+      service:
+        name: apache2
+        state: reloaded        
+  
+  #Handlers:
+  
+  #Roles:
+  
+
+
+...

@@ -1,0 +1,50 @@
+﻿---
+# Instalace Konfigurace gitu
+
+-
+  # Hosts:
+  hosts: all 
+  user: ansible
+  gather_facts: false
+  strategy: free
+  become: yes
+  
+  # Vars:
+  
+  # Tasks:
+  tasks:
+    - name: git - user.name
+      git_config:
+        name: user.name
+        scope: global
+        value: "Jméno Příjmení"  
+    - name: git - user.email        
+      git_config:
+        name: user.email
+        scope: global
+        value: mailova@adresa.cz          
+    - name: git - core editor
+      git_config:
+        name: core.editor
+        scope: global
+        value: joe
+    - name: git - alias lo
+      git_config:    
+        name: alias.lo
+        scope: global
+        value: "log --oneline"     
+    - name: git - alias ll
+      git_config:    
+        name: alias.lo
+        scope: global
+        value: "log --oneline --all --graph --decorate"
+    - name: git - alias st
+      git_config:    
+        name: alias.st
+        scope: global
+        value: "status"                       
+
+  #Handlers:
+  
+  #Roles:
+...

@@ -9,10 +9,21 @@
   become: yes
 
   tasks: 
+  - name: Instalace mailutils
+    package:
+      name: mailutils
+      state: present
+  - name: Instalace exim4
+    package:
+      name: exim4
+      state: present 
+  - name: Vytvori /root/skripty pokud neexistuje
+    file: 
+      path: "/root/skripty"
+      state: directory       
   - name: Copy file with backup
     copy:
       src: mezisklad/root/skripty/apt-mail
       dest: /root/skripty/apt-mail
       backup: yes
-             
 ...        
