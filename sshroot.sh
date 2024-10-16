@@ -1,12 +1,12 @@
 #!/bin/bash
-# Skript pro zkopírování ssh klíèù do pomeranèù
+# Skript pro zkopirovani ssh klicu do pomerancuù
 # Default range
 start=00
 end=30
 
-# Funkce obsahující vlastní èinnost provádìnou na pomeranèích
+# Funkce obsahujici vlastni cinnost provadenou na pomerancich
 run_task() {
-    # Argument $1 obsahuje èíslo pomeranèe
+    # Argument $1 obsahuje cislo pomerance
     if [[ `fping -c 1 -t 850 192.168.33.1$1 2> /dev/null | awk '{print $10}'` == "0%" ]]; then
      echo "Running task for Pomeranc$1" 
      sshpass -f password.txt ssh-copy-id -o StrictHostKeyChecking=no root@pomeranc$1
