@@ -9,6 +9,7 @@ run_task() {
     # Argument $1 obsahuje cislo pomerance
     if [[ `fping -c 1 -t 850 192.168.33.1$1 2> /dev/null | awk '{print $10}'` == "0%" ]]; then
      echo "Running task for Pomeranc$1" 
+     ssh-keygen -f "/root/.ssh/known_hosts" -R "pomeranc01" # smaze stary ssh zaznam pokud existuje
      sshpass -f password.txt ssh-copy-id -o StrictHostKeyChecking=no root@pomeranc$1
     else 
       echo "Pomeranc$1 NEpinga!!!"  
